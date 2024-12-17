@@ -1,14 +1,14 @@
 all: run_vit
 
 run_vit.o:
-	/opt/cuda/bin/nvcc --use_fast_math -std=c++17 -O3 -DENABLE_FP32\
+	nvcc --use_fast_math -std=c++17 -O3 -DENABLE_FP32\
 	    -I/usr/local/cuda/include \
 	    -I/usr/local/include/opencv4 \
 	    -I. \
 	    -c run_vit.cu -o run_vit.o
 
 run_vit: run_vit.o
-	/opt/cuda/bin/nvcc --use_fast_math -std=c++17 -O3 \
+	nvcc --use_fast_math -std=c++17 -O3 \
 	    -L/usr/local/cuda/lib64 \
 	    -L/usr/local/lib \
 	    run_vit.o \
